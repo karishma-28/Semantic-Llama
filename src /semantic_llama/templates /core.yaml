@@ -1,0 +1,75 @@
+id: http://w3id.org/linkml/ai/templates/core
+name: core-template
+title: AI core Template
+license: https://creativecommons.org/publicdomain/zero/1.0/
+prefixes:
+  linkml: https://w3id.org/linkml/
+  core: http://w3id.org/linkml/ai/templates/core/
+description: Core upper level
+
+default_prefix: core
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+  Any:
+    class_uri: linkml:Any
+
+  ExtractionResult:
+    description: >-
+      A result of extracting knowledge on text
+    attributes:
+      input_id:
+      input_title:
+      input_text:
+      raw_completion_output:
+      prompt:
+      results:
+        range: Any
+        inlined: true
+      named_entities:
+        range: Any
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+
+  NamedEntity:
+    abstract: true
+    attributes:
+      id:
+        identifier: true
+        annotations:
+          prompt.skip: "true"
+      label:
+        description: >-
+          The label of the named thing
+        range: string
+
+  Relationship:
+    abstract: true
+
+  CompoundExpression:
+    abstract: true
+
+  Publication:
+    attributes:
+      id:
+        description: >-
+          The publication identifier
+      title:
+        description: >-
+          The title of the publication
+      abstract:
+        description: >-
+          The abstract of the publication
+      full_text:
+        description: >-
+          The full text of the publication
+
+  AnnotatorResult:
+    attributes:
+      subject_text:
+      object_id:
+      object_text:
